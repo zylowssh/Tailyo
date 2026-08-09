@@ -1,8 +1,15 @@
 {
-  "/login/page": "app/login/page.js",
-  "/signup/page": "app/signup/page.js",
-  "/dashboard/equipes/page": "app/dashboard/equipes/page.js",
-  "/dashboard/facturation/page": "app/dashboard/facturation/page.js",
+  "/page": "app/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/demo/page": "app/demo/page.js",
+  "/dashboard/outils/page": "app/dashboard/outils/page.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/dashboard/abonnements/page": "app/dashboard/abonnements/page.js",
+  "/dashboard/utilisateurs/page": "app/dashboard/utilisateurs/page.js",
   "/dashboard/alertes/page": "app/dashboard/alertes/page.js",
-  "/dashboard/rapports/page": "app/dashboard/rapports/page.js"
+  "/dashboard/rapports/page": "app/dashboard/rapports/page.js",
+  "/dashboard/integrations/page": "app/dashboard/integrations/page.js",
+  "/dashboard/equipes/page": "app/dashboard/equipes/page.js",
+  "/dashboard/parametres/page": "app/dashboard/parametres/page.js",
+  "/dashboard/facturation/page": "app/dashboard/facturation/page.js"
 }

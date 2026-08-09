@@ -24,7 +24,10 @@ export function FinalCta() {
             </p>
           </div>
         </div>
-        <Magnetic><Button href="/signup" size="lg" className="shrink-0">Commencer l'essai gratuit</Button></Magnetic>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Magnetic><Button href="/signup" size="lg" className="shrink-0">Commencer l'essai gratuit</Button></Magnetic>
+          <Button href="/demo" variant="ghost" size="lg" className="shrink-0">Voir la démo →</Button>
+        </div>
       </motion.div>
     </section>
   );

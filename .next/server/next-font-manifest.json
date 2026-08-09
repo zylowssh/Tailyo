@@ -1,1 +1,67 @@
-{"pages":{},"app":{},"appUsingSizeAdjust":false,"pagesUsingSizeAdjust":false}
+{
+  "app": {
+    "[project]/app/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/demo/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/outils/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/abonnements/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/utilisateurs/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/alertes/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/rapports/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/integrations/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/equipes/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/parametres/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ],
+    "[project]/app/dashboard/facturation/page": [
+      "static/media/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw-s.p.0faac26c.woff2",
+      "static/media/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA-s.p.c6a7c70c.woff2",
+      "static/media/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8oRcTn-s.p.8943a95c.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

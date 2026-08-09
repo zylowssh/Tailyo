@@ -1,122 +1,114 @@
 "use client";
 import { motion } from "framer-motion";
-import { Card, PageHead, GhostBtn, Select, Sparkline, AreaChart, Donut, BrandTile, fadeUp } from "@/components/dash/ui";
-import { CalendarIcon, DownloadIcon, InfoIcon, PiggyIcon, SparklesIcon, CardIcon } from "@/components/dash/icons";
-import { GridIcon, UsersIcon, BellIcon } from "@/components/icons";
-import { SPEND_SERIES, RENEWALS, CATS, TEAMS_SPEND, ALERTS } from "@/lib/data";
+import { Card, Select, AreaChart, BrandTile } from "@/components/dash/ui";
+import { SparklesIcon, CardIcon, PiggyIcon } from "@/components/dash/icons";
+import { BellIcon } from "@/components/icons";
+import { GridIcon, UsersIcon } from "@/components/icons";
+import { SPEND_SERIES, ALERTS } from "@/lib/data";
 
 export default function Overview() {
   return (
-    <>
-      <PageHead title="Bonjour Thomas," sub="Voici l'état de vos abonnements SaaS.">
-        <GhostBtn><CalendarIcon className="h-3.5 w-3.5" /> 1 – 30 avril 2024</GhostBtn>
-        <GhostBtn><DownloadIcon className="h-3.5 w-3.5" /> Exporter</GhostBtn>
-      </PageHead>
+    <div className="relative">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative mb-8 overflow-hidden rounded-[2rem] bg-blob-lavender p-8 md:p-12"
+      >
+        <div className="relative z-10 max-w-lg">
+          <h1 className="text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
+            Bonjour Thomas <span className="inline-block animate-floaty">👋</span>
+          </h1>
+          <p className="mt-3 text-lg text-ink-soft">
+            On a analysé vos dépenses de la nuit. <br />
+            <span className="font-hand text-2xl text-primary-deep">J'ai trouvé 3 trucs bizarres...</span>
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="/dashboard/alertes" className="rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-cream transition hover:bg-ink/80">
+              Voir les 3 alertes
+            </a>
+            <a href="/dashboard/rapports" className="rounded-full bg-white/60 px-5 py-2.5 text-sm font-bold text-ink backdrop-blur-sm transition hover:bg-white">
+              Lire le résumé
+            </a>
+          </div>
+        </div>
+        <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+        <svg className="absolute bottom-4 right-8 hidden md:block" width="120" height="120" viewBox="0 0 120 120" fill="none">
+          <path d="M20 80 C 40 20, 80 20, 100 80" stroke="#5B54EE" strokeWidth="3" strokeLinecap="round" strokeDasharray="4 4" />
+          <circle cx="100" cy="80" r="6" fill="#F5C542" />
+        </svg>
+      </motion.div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <Card d={0.1} className="flex items-start justify-between">
+      <div className="grid gap-4 md:grid-cols-12">
+        <Card d={0.1} className="relative flex flex-col justify-between md:col-span-5">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Dépenses totales</p>
-            <p className="mt-2 text-2xl font-extrabold text-ink">143 650 €</p>
-            <p className="mt-1 text-[11px] text-ink-soft"><span className="font-semibold text-success">↗ 12%</span> vs mars 2024</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-ink-soft">Économies ce mois-ci</p>
+            <p className="mt-3 text-5xl font-extrabold tracking-tight text-ink">2 450 €</p>
+            <p className="font-hand mt-2 text-xl text-success">C'est 2 mois de Slack gratuits ! 🎉</p>
           </div>
-          <Sparkline values={[40, 55, 48, 62, 58, 74, 70, 88]} w={110} h={40} id="st1" />
-        </Card>
-        <Card d={0.15} className="flex items-start justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Outils suivis</p>
-            <p className="mt-2 text-2xl font-extrabold text-ink">96</p>
-            <p className="mt-1 text-[11px] text-success">↗ 4 nouveaux</p>
+          <div className="mt-6 h-24 w-full">
+            <svg viewBox="0 0 200 80" className="h-full w-full">
+              <motion.rect x="10" y="40" width="20" height="40" fill="#ECEBFC" rx="4" initial={{ height: 0, y: 80 }} animate={{ height: 40, y: 40 }} transition={{ delay: 0.3 }} />
+              <motion.rect x="40" y="20" width="20" height="60" fill="#ECEBFC" rx="4" initial={{ height: 0, y: 80 }} animate={{ height: 60, y: 20 }} transition={{ delay: 0.4 }} />
+              <motion.rect x="70" y="30" width="20" height="50" fill="#ECEBFC" rx="4" initial={{ height: 0, y: 80 }} animate={{ height: 50, y: 30 }} transition={{ delay: 0.5 }} />
+              <motion.rect x="100" y="10" width="20" height="70" fill="#5B54EE" rx="4" initial={{ height: 0, y: 80 }} animate={{ height: 70, y: 10 }} transition={{ delay: 0.6 }} />
+              <motion.path d="M 130 60 Q 160 -10, 190 20" stroke="#F5C542" strokeWidth="4" fill="none" strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 1 }} />
+            </svg>
           </div>
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-success-soft"><GridIcon className="h-4 w-4 text-success" /></span>
         </Card>
-        <Card d={0.2} className="flex items-start justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Abonnements actifs</p>
-            <p className="mt-2 text-2xl font-extrabold text-ink">128</p>
-            <p className="mt-1 text-[11px] text-warn">↘ 3 annulés</p>
-          </div>
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-warn-soft"><CardIcon className="h-4 w-4 text-warn" /></span>
-        </Card>
-        <Card d={0.25} className="flex items-start justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Économies potentielles</p>
-            <p className="mt-2 text-2xl font-extrabold text-ink">24 350 €</p>
-            <a href="#" className="mt-1 inline-block text-[11px] font-semibold text-primary hover:text-primary-deep">Voir les opportunités →</a>
-          </div>
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10"><PiggyIcon className="h-4 w-4 text-primary-deep" /></span>
-        </Card>
+
+        <div className="grid gap-4 sm:grid-cols-2 md:col-span-7">
+          <Card d={0.2} className="border-transparent bg-cream-deep shadow-none">
+            <p className="text-xs font-bold uppercase tracking-widest text-ink-soft">Outils actifs</p>
+            <p className="mt-2 text-3xl font-extrabold text-ink">96</p>
+            <div className="mt-4 flex -space-x-2">
+              <BrandTile name="Slack" />
+              <BrandTile name="Notion" />
+              <BrandTile name="Figma" />
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-ink text-[10px] font-bold text-cream">+93</span>
+            </div>
+          </Card>
+          <Card d={0.3} className="border-transparent bg-blob-sun shadow-none">
+            <p className="text-xs font-bold uppercase tracking-widest text-ink-soft">Renouvellements</p>
+            <p className="mt-2 text-3xl font-extrabold text-ink">14 <span className="text-lg font-normal text-ink-soft">j</span></p>
+            <p className="mt-2 text-sm font-medium text-ink-soft">HubSpot arrive bientôt...</p>
+            <p className="font-hand text-lg text-danger">Attention au budget !</p>
+          </Card>
+        </div>
       </div>
 
-      <div className="mt-6 grid gap-6 xl:grid-cols-[1fr_380px]">
-        <Card d={0.3}>
+      <div className="mt-8 grid gap-6 xl:grid-cols-[1fr_380px]">
+        <Card d={0.4} className="bg-white">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="flex items-center gap-2 text-sm font-bold text-ink">Dépenses au cours du temps <InfoIcon className="h-3.5 w-3.5 text-ink-soft" /></h2>
-            <Select label="Mensuel" />
+            <h2 className="text-lg font-bold text-ink">L'évolution de vos dépenses</h2>
+            <Select label="6 derniers mois" />
           </div>
           <AreaChart values={SPEND_SERIES} />
-        </Card>
-        <Card d={0.35}>
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-sm font-bold text-ink">Renouvellements à venir</h2>
-            <a href="/dashboard/abonnements" className="text-xs font-semibold text-primary hover:text-primary-deep">Voir tout</a>
+          <div className="mt-4 flex items-center gap-2 border-t border-ink/5 pt-4">
+            <SparklesIcon className="h-4 w-4 text-primary" />
+            <p className="text-sm text-ink-soft">
+              <span className="font-bold text-ink">IA Tallyo :</span> Vos dépenses ont augmenté de 12% à cause de l'ajout de 4 nouveaux designers sur Figma.
+            </p>
           </div>
-          <ul className="space-y-3">
-            {RENEWALS.map((r) => (
-              <li key={r.name} className="flex items-center gap-3 rounded-xl border border-ink/5 p-2.5">
-                <BrandTile name={r.name} />
-                <span className="flex-1"><span className="block text-[13px] font-semibold text-ink">{r.name}</span><span className="block text-[11px] text-ink-soft">{r.amount}</span></span>
-                <span className="text-right"><span className="block text-[11px] text-ink-soft">{r.date}</span><span className={`block text-[11px] font-semibold ${r.days < 30 ? "text-warn" : "text-success"}`}>● Dans {r.days} jours</span></span>
-              </li>
-            ))}
-          </ul>
         </Card>
-      </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        <Card d={0.4}>
-          <h2 className="mb-5 text-sm font-bold text-ink">Dépenses par catégorie</h2>
-          <div className="flex items-center gap-6">
-            <Donut data={CATS} centerTop="143 650 €" centerSub="Total" />
-            <ul className="flex-1 space-y-2">
-              {CATS.map((c) => (
-                <li key={c.label} className="flex items-center gap-2 text-[11px]"><span className="h-2.5 w-2.5 rounded-sm" style={{ background: c.color }} /><span className="flex-1 text-ink-soft">{c.label}</span><span className="font-semibold text-ink">{c.value.toLocaleString("fr-FR")} €</span><span className="w-8 text-right text-ink-soft">{c.pct}</span></li>
-              ))}
-            </ul>
-          </div>
-        </Card>
-        <Card d={0.45}>
-          <h2 className="mb-5 text-sm font-bold text-ink">Dépenses par équipe</h2>
-          <ul className="space-y-3.5">
-            {TEAMS_SPEND.map((t, i) => (
-              <li key={t.label} className="grid grid-cols-[64px_1fr_auto] items-center gap-3 text-[11px]">
-                <span className="text-ink-soft">{t.label}</span>
-                <span className="h-1.5 overflow-hidden rounded-full bg-ink/5"><motion.span initial={{ width: 0 }} animate={{ width: `${t.pct * 4}%` }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: "easeOut" }} className="block h-full rounded-full bg-primary" /></span>
-                <span className="font-semibold text-ink">{t.amount} <span className="ml-1 font-normal text-ink-soft">{t.share}</span></span>
-              </li>
-            ))}
-          </ul>
-        </Card>
-        <Card d={0.5} className="lg:col-span-2 xl:col-span-1">
-          <div className="mb-4 flex items-center justify-between"><h2 className="text-sm font-bold text-ink">Alertes</h2><a href="/dashboard/alertes" className="text-xs font-semibold text-primary hover:text-primary-deep">Voir tout</a></div>
-          <ul className="space-y-3">
-            {ALERTS.slice(0, 3).map((a) => (
-              <li key={a.title} className="flex items-start gap-3 rounded-xl border border-ink/5 p-3">
-                <span className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full ${a.tone === "red" ? "bg-danger-soft text-danger" : a.tone === "orange" ? "bg-warn-soft text-warn" : "bg-primary/10 text-primary-deep"}`}>
-                  {a.tone === "orange" ? <UsersIcon className="h-3.5 w-3.5" /> : <BellIcon className="h-3.5 w-3.5" />}
+        <Card d={0.5} className="bg-ink text-cream">
+          <h2 className="flex items-center gap-2 text-lg font-bold text-cream">
+            <BellIcon className="h-5 w-5 text-accent" /> Le radar
+          </h2>
+          <ul className="mt-6 space-y-6">
+            {ALERTS.slice(0, 3).map((a, i) => (
+              <li key={i} className="relative border-b border-cream/10 pb-4 last:border-0">
+                <span className={`font-hand absolute -left-2 -top-4 text-lg ${a.tone === "red" ? "text-danger" : a.tone === "orange" ? "text-accent" : "text-primary"}`}>
+                  {a.tone === "red" ? "🚨" : a.tone === "orange" ? "👀" : "✨"}
                 </span>
-                <span><span className="block text-[13px] font-semibold leading-snug text-ink">{a.title}</span><span className="mt-0.5 block text-[11px] text-ink-soft">{a.sub}</span></span>
+                <p className="text-sm font-bold leading-snug text-cream">{a.title}</p>
+                <p className="mt-1 text-xs text-cream/60">{a.sub}</p>
               </li>
             ))}
           </ul>
+          <a href="/dashboard/alertes" className="mt-4 inline-block font-hand text-xl text-accent hover:text-accent/80">Tout voir →</a>
         </Card>
       </div>
-
-      <motion.div {...fadeUp(0.55)} className="mt-6 flex flex-wrap items-center gap-4 rounded-2xl border border-primary/15 bg-primary/5 p-5">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/15"><SparklesIcon className="h-5 w-5 text-primary-deep" /></span>
-        <div className="flex-1"><p className="text-sm font-bold text-ink">Nous avons identifié 24 350 € d'économies potentielles</p><p className="text-xs text-ink-soft">16 sièges inutilisés, 3 outils en doublon et 5 abonnements peu utilisés.</p></div>
-        <a href="#" className="rounded-lg border border-primary/30 bg-white px-4 py-2.5 text-xs font-bold text-primary-deep transition hover:bg-primary hover:text-white">Découvrir les opportunités →</a>
-      </motion.div>
-    </>
+    </div>
   );
 }

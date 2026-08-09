@@ -79,8 +79,11 @@ export default function SignupPage() {
           <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div key="s1" {...fade()} className="mx-auto max-w-md">
-                <h1 className="text-2xl font-extrabold tracking-tight text-ink">Créer votre compte</h1>
-                <p className="mt-1 text-sm text-ink-soft">Commencez votre audit en quelques minutes.</p>
+                <div className="relative">
+                  <h1 className="text-3xl font-extrabold tracking-tight text-ink">On y va ? 🚀</h1>
+                  <span className="font-hand absolute -right-12 -top-6 rotate-6 text-xl text-primary-deep">C'est gratuit 14 jours !</span>
+                </div>
+                <p className="mt-2 text-sm text-ink-soft">Créez votre espace en 30 secondes.</p>
 
                 <form className="mt-8 space-y-5" onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
                   <div className="grid grid-cols-2 gap-4">
@@ -105,6 +108,7 @@ export default function SignupPage() {
                         {showPwd ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
                       </button>
                     </div>
+                    <p className="font-hand mt-2 text-sm text-ink-soft">Astuce : utilisez votre gestionnaire de mots de passe 😉</p>
                     <ul className="mt-3 space-y-1.5">
                       {['8 caractères minimum', '1 majuscule et 1 chiffre', 'Caractères spéciaux autorisés'].map((l, i) => (
                         <li key={l} className={cn("flex items-center gap-2 text-xs", checks[i] ? "text-success" : "text-ink-soft")}>
@@ -113,8 +117,8 @@ export default function SignupPage() {
                       ))}
                     </ul>
                   </div>
-                  <button className="w-full rounded-lg bg-primary py-3.5 text-sm font-bold text-white shadow-[0_12px_28px_-12px_rgba(91,84,238,0.8)] transition hover:bg-primary-deep">
-                    Créer mon compte
+                  <button className="w-full rounded-lg bg-ink py-3.5 text-sm font-bold text-cream transition hover:bg-ink/90">
+                    C'est parti →
                   </button>
                 </form>
                 <p className="mt-6 text-center text-sm text-ink-soft">
@@ -126,9 +130,9 @@ export default function SignupPage() {
             {step === 2 && (
               <motion.div key="s2" {...fade()}>
                 <div className="text-center">
-                  <h1 className="text-2xl font-extrabold tracking-tight text-ink">Connectez vos sources</h1>
-                  <p className="mt-1 text-sm text-ink-soft">C'est ici que la magie opère ✨</p>
-                  <p className="text-sm text-ink-soft">Plus vous connectez de sources, plus l'audit sera précis.</p>
+                  <h1 className="text-3xl font-extrabold tracking-tight text-ink">D'où viennent vos dépenses ?</h1>
+                  <p className="font-hand mt-2 text-2xl text-primary-deep">C'est ici que la magie opère ✨</p>
+                  <p className="mt-1 text-sm text-ink-soft">Connectez vos comptes. Plus il y en a, plus on est précis.</p>
                 </div>
 
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -44,7 +44,7 @@ export function Hero() {
           transition={{ duration: 0.7, ease: EASE, delay: 0.68 }}
           className="mt-8 flex flex-wrap items-center gap-6">
           <Magnetic><Button href="/signup" size="lg">Commencer l'essai gratuit</Button></Magnetic>
-          <a href="/dashboard" className="group inline-flex items-center gap-2 text-sm font-semibold">
+          <a href="/demo" className="group inline-flex items-center gap-2 text-sm font-semibold">
             Voir la démo (2 min)
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
