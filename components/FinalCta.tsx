@@ -24,7 +24,7 @@ export function FinalCta() {
             </p>
           </div>
         </div>
-        <Magnetic><Button href="#tarifs" size="lg" className="shrink-0">Essayer gratuitement</Button></Magnetic>
+        <Magnetic><Button href="/signup" size="lg" className="shrink-0">Essayer gratuitement</Button></Magnetic>
       </motion.div>
     </section>
   );
