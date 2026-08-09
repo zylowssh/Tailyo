@@ -1,4 +1,4 @@
-// File: C:\Users\01\Downloads\tallyo-codebase\tallyo\app\page.tsx
+// File: C:\Users\01\Documents\Tailyo\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
