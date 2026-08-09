@@ -37,7 +37,7 @@ export function Pricing({ features }: { features: string[] }) {
 
       <div className="relative mt-8">
         <Magnetic className="block">
-          <Button href="/signup" size="lg" className="w-full">Essayer gratuitement pendant 14 jours</Button>
+          <Button href="/signup" size="lg" className="w-full">Commencer l'essai gratuit</Button>
         </Magnetic>
         <ArrowDoodle className="absolute -right-4 -top-16 hidden h-14 w-14 rotate-[30deg] text-ink xl:block" />
       </div>

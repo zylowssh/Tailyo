@@ -15,25 +15,7 @@ export function Hero() {
     <section className="container-x grid items-start gap-16 pb-28 pt-32 sm:pt-36 lg:grid-cols-2 lg:gap-10">
       {/* ——— left ——— */}
       <div>
-        <div className="relative inline-block">
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="inline-block rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary-deep"
-          >
-            Découvrez, comprenez, économisez.
-          </motion.span>
-          <motion.div
-            initial={{ opacity: 0, x: -20, rotate: -20 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
-            className="absolute -right-16 -top-8 hidden h-12 w-12 text-ink lg:block"
-          >
-            <ArrowDoodle />
-          </motion.div>
-        </div>
-
-        <h1 className="mt-6 text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl xl:text-7xl">
+        <h1 className="text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl xl:text-7xl">
           {["Découvrez,", "comprenez,"].map((l, i) => (
             <span key={l} className="block overflow-hidden pb-1">
               <motion.span className="block" initial={{ y: "112%" }} animate={{ y: 0 }}
@@ -61,7 +43,7 @@ export function Hero() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE, delay: 0.68 }}
           className="mt-8 flex flex-wrap items-center gap-6">
-          <Magnetic><Button href="/signup" size="lg">Essayer gratuitement</Button></Magnetic>
+          <Magnetic><Button href="/signup" size="lg">Commencer l'essai gratuit</Button></Magnetic>
           <a href="/dashboard" className="group inline-flex items-center gap-2 text-sm font-semibold">
             Voir la démo (2 min)
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -28,7 +28,7 @@ const config: Config = {
         lift: "0 24px 48px -16px rgba(22,22,31,0.22)",
       },
       keyframes: {
-        marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-100%)" } },
+        marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
         floaty: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-8px)" } },
       },
       animation: {
