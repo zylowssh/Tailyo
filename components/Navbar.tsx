@@ -49,8 +49,8 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-5 lg:flex">
-            <a href="#tarifs" className="text-sm font-medium text-ink-soft transition hover:text-ink">Se connecter</a>
-            <Button href="#tarifs">Essayer gratuitement</Button>
+            <a href="/login" className="text-sm font-medium text-ink-soft transition hover:text-ink">Se connecter</a>
+            <Button href="/signup">Essayer gratuitement</Button>
           </div>
 
           {/* burger */}
@@ -80,8 +80,8 @@ export function Navbar() {
                   </a>
                 ))}
                 <div className="mt-2 flex items-center gap-4">
-                  <Button href="#tarifs" onClick={() => setOpen(false)}>Essayer gratuitement</Button>
-                  <a href="#tarifs" className="text-sm font-medium text-ink-soft">Se connecter</a>
+                  <Button href="/signup" onClick={() => setOpen(false)}>Essayer gratuitement</Button>
+                  <a href="/login" onClick={() => setOpen(false)} className="text-sm font-medium text-ink-soft">Se connecter</a>
                 </div>
               </div>
             </motion.div>

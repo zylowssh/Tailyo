@@ -54,8 +54,8 @@ export function Hero() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE, delay: 0.68 }}
           className="mt-8 flex flex-wrap items-center gap-6">
-          <Magnetic><Button href="#tarifs" size="lg">Essayer gratuitement</Button></Magnetic>
-          <a href="#ressources" className="group inline-flex items-center gap-2 text-sm font-semibold">
+          <Magnetic><Button href="/signup" size="lg">Essayer gratuitement</Button></Magnetic>
+          <a href="/dashboard" className="group inline-flex items-center gap-2 text-sm font-semibold">
             Voir la démo (2 min)
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
