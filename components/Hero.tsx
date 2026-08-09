@@ -21,9 +21,16 @@ export function Hero() {
             transition={{ duration: 0.6, ease: EASE }}
             className="inline-block rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary-deep"
           >
-            Le contrôle de vos abonnements SaaS, enfin.
+            Découvrez, comprenez, économisez.
           </motion.span>
-          <ArrowDoodle className="absolute -right-16 -top-8 hidden h-12 w-12 text-ink lg:block" />
+          <motion.div
+            initial={{ opacity: 0, x: -20, rotate: -20 }}
+            animate={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
+            className="absolute -right-16 -top-8 hidden h-12 w-12 text-ink lg:block"
+          >
+            <ArrowDoodle />
+          </motion.div>
         </div>
 
         <h1 className="mt-6 text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-6xl xl:text-7xl">
@@ -74,17 +81,50 @@ export function Hero() {
 
       {/* ——— right : dashboard ——— */}
       <div className="relative isolate lg:pl-4">
-        <Blob className="absolute -bottom-12 -left-12 -z-10 h-64 w-72 text-blob-sun" />
-        <Dashes className="absolute -left-16 top-1/2 hidden h-14 w-10 text-ink lg:block" />
-        <Sparkle className="absolute -top-12 right-4 h-10 w-10 text-ink" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1, duration: 0.8, ease: EASE }}
+          className="absolute -bottom-12 -left-12 -z-10 h-64 w-72 text-blob-sun"
+        >
+          <Blob />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="absolute -left-16 top-1/2 hidden h-14 w-10 text-ink lg:block"
+        >
+          <Dashes />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.1, duration: 0.5, ease: EASE }}
+          className="absolute -top-12 right-4 h-10 w-10 text-ink"
+        >
+          <Sparkle />
+        </motion.div>
 
-        <Tilt max={5}>
-          <DashboardMockup />
-        </Tilt>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
+        >
+          <Tilt max={5}>
+            <DashboardMockup />
+          </Tilt>
+        </motion.div>
 
         <div className="absolute -bottom-16 right-0 hidden items-end gap-3 md:flex">
-          <ArrowDoodle className="h-12 w-12 -scale-y-100 rotate-[15deg] text-ink" />
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2, duration: 0.8 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.4, duration: 0.5 }}
+          >
+            <ArrowDoodle className="h-12 w-12 -scale-y-100 rotate-[15deg] text-ink" />
+          </motion.div>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}
             className="font-hand text-2xl leading-tight text-ink -rotate-3">
             Tout est centralisé.<br />Enfin.
           </motion.p>

@@ -17,14 +17,14 @@ export function FinalCta() {
           </motion.span>
           <div>
             <h2 className="text-xl font-extrabold tracking-tight sm:text-2xl">
-              Reprenez le contrôle. Économisez. Réinvestissez.
+              Reprenez le contrôle. Économisez.
             </h2>
             <p className="mt-2 text-sm text-ink-soft">
               Rejoignez les entreprises qui ne laissent plus leurs abonnements leur échapper.
             </p>
           </div>
         </div>
-        <Magnetic><Button href="/signup" size="lg" className="shrink-0">Essayer gratuitement</Button></Magnetic>
+        <Magnetic><Button href="/signup" size="lg" className="shrink-0">Commencer l'essai gratuit</Button></Magnetic>
       </motion.div>
     </section>
   );

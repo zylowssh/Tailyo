@@ -49,8 +49,8 @@ export function LogoCloud() {
     <section className="border-y border-ink/5 bg-cream pb-14 pt-10">
       <p className="text-center text-xs font-medium text-ink-soft">Ils nous font confiance</p>
       <div className="mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        <div className="flex w-max animate-marquee items-center gap-16 pr-16 hover:[animation-play-state:paused]">
-          {[...LOGOS, ...LOGOS, ...LOGOS].map((l, i) => (
+        <div className="flex w-max animate-marquee items-center gap-16 hover:[animation-play-state:paused]">
+          {[...LOGOS, ...LOGOS].map((l, i) => (
             <Wordmark key={`${l.name}-${i}`} l={l} />
           ))}
         </div>

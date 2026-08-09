@@ -1,4 +1,6 @@
 "use client";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/icons";
 import { Button } from "@/components/Button";
 import { Magnetic } from "@/components/Magnetic";
@@ -12,101 +14,172 @@ const SUBSCRIPTIONS = [
 ];
 
 export default function DashboardPage() {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Top nav */}
-      <header className="border-b border-ink/5 bg-white/80 backdrop-blur-md">
-        <div className="container-x flex h-16 items-center justify-between">
-          <a href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
-            <LogoMark className="h-6 w-6 text-primary" /> Tallyo
-          </a>
-          <div className="flex items-center gap-4">
-            <span className="hidden text-sm font-medium text-ink-soft sm:block">Demo Mode</span>
-            <Button href="/login" size="sm" variant="ghost">Se déconnecter</Button>
-          </div>
-        </div>
-      </header>
-
-      <main className="container-x py-8">
-        {/* Stats */}
-        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard label="Dépense mensuelle" value="€4,220" trend="+12%" trendUp />
-          <StatCard label="Abonnements actifs" value="23" trend="-2" trendUp={false} />
-          <StatCard label="Sièges inutilisés" value="18" trend="€864/mois" trendUp={false} />
-          <StatCard label="Renouvellements (30j)" value="7" trend="€1,890" trendUp />
-        </div>
-
-        {/* Main content */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Subscriptions table */}
-          <div className="rounded-2xl border border-ink/5 bg-white p-6 shadow-card lg:col-span-2">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-ink">Abonnements</h2>
-              <Button href="#" size="sm">Voir tout</Button>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm">
-                <thead>
-                  <tr className="border-b border-ink/5 text-xs font-medium text-ink-soft">
-                    <th className="pb-3">Outil</th>
-                    <th className="pb-3">Sièges</th>
-                    <th className="pb-3">Dépensé (an)</th>
-                    <th className="pb-3">Renouvellement</th>
-                    <th className="pb-3">Statut</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {SUBSCRIPTIONS.map((sub) => (
-                    <tr key={sub.name} className="border-b border-ink/5 last:border-0">
-                      <td className="py-3 font-medium text-ink">{sub.name}</td>
-                      <td className="py-3 text-ink-soft">{sub.seats}</td>
-                      <td className="py-3 text-ink-soft">{sub.spent}</td>
-                      <td className="py-3 text-ink-soft">{sub.renewal}</td>
-                      <td className="py-3">
-                        <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
-                          sub.status === "warning" 
-                            ? "bg-accent/20 text-accent" 
-                            : "bg-primary/10 text-primary-deep"
-                        }`}>
-                          {sub.status === "warning" ? "Attention" : "Actif"}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Side panel */}
-          <div className="space-y-6">
-            {/* Alert card */}
-            <div className="rounded-2xl border border-ink/5 bg-accent/10 p-6">
-              <h3 className="font-bold text-ink">Action requise</h3>
-              <p className="mt-2 text-sm text-ink-soft">
-                Slack arrive à échéance dans 10 jours. 12 sièges semblent inutilisés.
-              </p>
-              <Magnetic>
-                <Button href="#" size="sm" className="mt-4 bg-ink text-cream hover:bg-ink/90">
-                  Examiner
-                </Button>
-              </Magnetic>
-            </div>
-
-            {/* Quick actions */}
-            <div className="rounded-2xl border border-ink/5 bg-white p-6 shadow-card">
-              <h3 className="font-bold text-ink">Actions rapides</h3>
-              <div className="mt-4 space-y-2">
-                <QuickAction icon="📊" label="Exporter les données" href="#" />
-                <QuickAction icon="🔔" label="Configurer les alertes" href="#" />
-                <QuickAction icon="👥" label="Inviter un collègue" href="#" />
-                <QuickAction icon="💳" label="Ajouter une source" href="#" />
+    <AnimatePresence>
+      {!loaded ? (
+        <motion.div
+          key="loader"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-cream"
+        >
+          <svg viewBox="0 0 32 32" className="h-20 w-20 text-primary" fill="currentColor">
+            <motion.rect
+              x="4" y="17" width="6" height="11" rx="3"
+              initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
+              transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformOrigin: "bottom" }}
+            />
+            <motion.rect
+              x="13" y="6" width="6" height="22" rx="3"
+              initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
+              transition={{ duration: 0.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformOrigin: "bottom" }}
+            />
+            <motion.rect
+              x="22" y="11" width="6" height="17" rx="3"
+              initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
+              transition={{ duration: 0.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformOrigin: "bottom" }}
+            />
+          </svg>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="min-h-screen bg-cream"
+        >
+          {/* Top nav */}
+          <header className="border-b border-ink/5 bg-white/80 backdrop-blur-md">
+            <div className="container-x flex h-16 items-center justify-between">
+              <motion.a
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                href="/"
+                className="flex items-center gap-2 text-xl font-extrabold tracking-tight"
+              >
+                <LogoMark className="h-6 w-6 text-primary" /> Tallyo
+              </motion.a>
+              <div className="flex items-center gap-4">
+                <span className="hidden text-sm font-medium text-ink-soft sm:block">Demo Mode</span>
+                <Button href="/login" size="sm" variant="ghost">Se déconnecter</Button>
               </div>
             </div>
-          </div>
-        </div>
-      </main>
-    </div>
+          </header>
+
+          <main className="container-x py-8">
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              <StatCard label="Dépense mensuelle" value="€4,220" trend="+12%" trendUp />
+              <StatCard label="Abonnements actifs" value="23" trend="-2" trendUp={false} />
+              <StatCard label="Sièges inutilisés" value="18" trend="€864/mois" trendUp={false} />
+              <StatCard label="Renouvellements (30j)" value="7" trend="€1,890" trendUp />
+            </motion.div>
+
+            {/* Main content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="grid gap-6 lg:grid-cols-3"
+            >
+              {/* Subscriptions table */}
+              <div className="rounded-2xl border border-ink/5 bg-white p-6 shadow-card lg:col-span-2">
+                <div className="mb-4 flex items-center justify-between">
+                  <h2 className="text-lg font-bold text-ink">Abonnements</h2>
+                  <Button href="#" size="sm">Voir tout</Button>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-ink/5 text-xs font-medium text-ink-soft">
+                        <th className="pb-3">Outil</th>
+                        <th className="pb-3">Sièges</th>
+                        <th className="pb-3">Dépensé (an)</th>
+                        <th className="pb-3">Renouvellement</th>
+                        <th className="pb-3">Statut</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {SUBSCRIPTIONS.map((sub) => (
+                        <tr key={sub.name} className="border-b border-ink/5 last:border-0">
+                          <td className="py-3 font-medium text-ink">{sub.name}</td>
+                          <td className="py-3 text-ink-soft">{sub.seats}</td>
+                          <td className="py-3 text-ink-soft">{sub.spent}</td>
+                          <td className="py-3 text-ink-soft">{sub.renewal}</td>
+                          <td className="py-3">
+                            <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
+                              sub.status === "warning" 
+                                ? "bg-accent/20 text-accent" 
+                                : "bg-primary/10 text-primary-deep"
+                            }`}>
+                              {sub.status === "warning" ? "Attention" : "Actif"}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Side panel */}
+              <div className="space-y-6">
+                {/* Alert card */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="rounded-2xl border border-ink/5 bg-accent/10 p-6"
+                >
+                  <h3 className="font-bold text-ink">Action requise</h3>
+                  <p className="mt-2 text-sm text-ink-soft">
+                    Slack arrive à échéance dans 10 jours. 12 sièges semblent inutilisés.
+                  </p>
+                  <Magnetic>
+                    <Button href="#" size="sm" className="mt-4 bg-ink text-cream hover:bg-ink/90">
+                      Examiner
+                    </Button>
+                  </Magnetic>
+                </motion.div>
+
+                {/* Quick actions */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="rounded-2xl border border-ink/5 bg-white p-6 shadow-card"
+                >
+                  <h3 className="font-bold text-ink">Actions rapides</h3>
+                  <div className="mt-4 space-y-2">
+                    <QuickAction icon="📊" label="Exporter les données" href="#" />
+                    <QuickAction icon="🔔" label="Configurer les alertes" href="#" />
+                    <QuickAction icon="👥" label="Inviter un collègue" href="#" />
+                    <QuickAction icon="💳" label="Ajouter une source" href="#" />
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </main>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
