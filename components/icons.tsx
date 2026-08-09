@@ -16,11 +16,17 @@ export const CheckIcon = (p: P) => (
 export const ArrowRightIcon = (p: P) => (
   <svg viewBox="0 0 24 24" {...base} {...p}><path d="M4 12h16M13 5l7 7-7 7" /></svg>
 );
+export const ArrowLeftIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...base} {...p}><path d="M20 12H4m7-7-7 7 7 7" /></svg>
+);
 export const ChevronDownIcon = (p: P) => (
   <svg viewBox="0 0 24 24" {...base} {...p}><path d="M6 9l6 6 6-6" /></svg>
 );
 export const TrendUpIcon = (p: P) => (
   <svg viewBox="0 0 24 24" {...base} {...p}><path d="M3 17l6-6 4 4 8-8M14 7h7v7" /></svg>
+);
+export const SearchIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...base} {...p}><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
 );
 export const HomeIcon = (p: P) => (
   <svg viewBox="0 0 24 24" {...base} {...p}><path d="M4 11l8-7 8 7M6 10v10h12V10" /></svg>
@@ -51,6 +57,9 @@ export const GearIcon = (p: P) => (
     <circle cx="12" cy="12" r="3.5" />
     <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
   </svg>
+);
+export const UploadIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...base} {...p}><path d="M12 16V5m0 0-4 4m4-4 4 4M4 19h16" /></svg>
 );
 export const StarIcon = (p: P) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...p}>

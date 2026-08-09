@@ -11,6 +11,9 @@ const config: Config = {
         "ink-soft": "#50505B",
         primary: { DEFAULT: "#5B54EE", deep: "#4038D6", soft: "#ECEBFC" },
         accent: { DEFAULT: "#F5C542", soft: "#FBEECB" },
+        success: { DEFAULT: "#18A058", soft: "#E3F6EC" },
+        danger: { DEFAULT: "#E5484D", soft: "#FDE9EA" },
+        warn: { DEFAULT: "#F79A3E", soft: "#FEF0E3" },
         blob: {
           lavender: "#E5E1F8",
           sun: "#F8E9C0",
@@ -28,8 +31,14 @@ const config: Config = {
         lift: "0 24px 48px -16px rgba(22,22,31,0.22)",
       },
       keyframes: {
-        marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
-        floaty: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-8px)" } },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        floaty: {
+          "0%,100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
       },
       animation: {
         marquee: "marquee 34s linear infinite",

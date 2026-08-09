@@ -1,205 +1,122 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { LogoMark } from "@/components/icons";
-import { Button } from "@/components/Button";
-import { Magnetic } from "@/components/Magnetic";
+import { motion } from "framer-motion";
+import { Card, PageHead, GhostBtn, Select, Sparkline, AreaChart, Donut, BrandTile, fadeUp } from "@/components/dash/ui";
+import { CalendarIcon, DownloadIcon, InfoIcon, PiggyIcon, SparklesIcon, CardIcon } from "@/components/dash/icons";
+import { GridIcon, UsersIcon, BellIcon } from "@/components/icons";
+import { SPEND_SERIES, RENEWALS, CATS, TEAMS_SPEND, ALERTS } from "@/lib/data";
 
-const SUBSCRIPTIONS = [
-  { name: "Notion", seats: 12, spent: "€1,248", status: "active", renewal: "15 janv." },
-  { name: "Figma", seats: 8, spent: "€960", status: "active", renewal: "22 janv." },
-  { name: "Slack", seats: 45, spent: "€2,340", status: "warning", renewal: "3 févr." },
-  { name: "Linear", seats: 6, spent: "€432", status: "active", renewal: "10 févr." },
-  { name: "Vercel", seats: 1, spent: "€240", status: "active", renewal: "28 févr." },
-];
-
-export default function DashboardPage() {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-
+export default function Overview() {
   return (
-    <AnimatePresence>
-      {!loaded ? (
-        <motion.div
-          key="loader"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-cream"
-        >
-          <svg viewBox="0 0 32 32" className="h-20 w-20 text-primary" fill="currentColor">
-            <motion.rect
-              x="4" y="17" width="6" height="11" rx="3"
-              initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
-              transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{ transformOrigin: "bottom" }}
-            />
-            <motion.rect
-              x="13" y="6" width="6" height="22" rx="3"
-              initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
-              transition={{ duration: 0.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              style={{ transformOrigin: "bottom" }}
-            />
-            <motion.rect
-              x="22" y="11" width="6" height="17" rx="3"
-              initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
-              transition={{ duration: 0.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              style={{ transformOrigin: "bottom" }}
-            />
-          </svg>
-        </motion.div>
-      ) : (
-        <motion.div
-          key="content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="min-h-screen bg-cream"
-        >
-          {/* Top nav */}
-          <header className="border-b border-ink/5 bg-white/80 backdrop-blur-md">
-            <div className="container-x flex h-16 items-center justify-between">
-              <motion.a
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                href="/"
-                className="flex items-center gap-2 text-xl font-extrabold tracking-tight"
-              >
-                <LogoMark className="h-6 w-6 text-primary" /> Tallyo
-              </motion.a>
-              <div className="flex items-center gap-4">
-                <span className="hidden text-sm font-medium text-ink-soft sm:block">Demo Mode</span>
-                <Button href="/login" size="sm" variant="ghost">Se déconnecter</Button>
-              </div>
-            </div>
-          </header>
+    <>
+      <PageHead title="Bonjour Thomas," sub="Voici l'état de vos abonnements SaaS.">
+        <GhostBtn><CalendarIcon className="h-3.5 w-3.5" /> 1 – 30 avril 2024</GhostBtn>
+        <GhostBtn><DownloadIcon className="h-3.5 w-3.5" /> Exporter</GhostBtn>
+      </PageHead>
 
-          <main className="container-x py-8">
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-            >
-              <StatCard label="Dépense mensuelle" value="€4,220" trend="+12%" trendUp />
-              <StatCard label="Abonnements actifs" value="23" trend="-2" trendUp={false} />
-              <StatCard label="Sièges inutilisés" value="18" trend="€864/mois" trendUp={false} />
-              <StatCard label="Renouvellements (30j)" value="7" trend="€1,890" trendUp />
-            </motion.div>
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <Card d={0.1} className="flex items-start justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Dépenses totales</p>
+            <p className="mt-2 text-2xl font-extrabold text-ink">143 650 €</p>
+            <p className="mt-1 text-[11px] text-ink-soft"><span className="font-semibold text-success">↗ 12%</span> vs mars 2024</p>
+          </div>
+          <Sparkline values={[40, 55, 48, 62, 58, 74, 70, 88]} w={110} h={40} id="st1" />
+        </Card>
+        <Card d={0.15} className="flex items-start justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Outils suivis</p>
+            <p className="mt-2 text-2xl font-extrabold text-ink">96</p>
+            <p className="mt-1 text-[11px] text-success">↗ 4 nouveaux</p>
+          </div>
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-success-soft"><GridIcon className="h-4 w-4 text-success" /></span>
+        </Card>
+        <Card d={0.2} className="flex items-start justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Abonnements actifs</p>
+            <p className="mt-2 text-2xl font-extrabold text-ink">128</p>
+            <p className="mt-1 text-[11px] text-warn">↘ 3 annulés</p>
+          </div>
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-warn-soft"><CardIcon className="h-4 w-4 text-warn" /></span>
+        </Card>
+        <Card d={0.25} className="flex items-start justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-soft">Économies potentielles</p>
+            <p className="mt-2 text-2xl font-extrabold text-ink">24 350 €</p>
+            <a href="#" className="mt-1 inline-block text-[11px] font-semibold text-primary hover:text-primary-deep">Voir les opportunités →</a>
+          </div>
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10"><PiggyIcon className="h-4 w-4 text-primary-deep" /></span>
+        </Card>
+      </div>
 
-            {/* Main content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="grid gap-6 lg:grid-cols-3"
-            >
-              {/* Subscriptions table */}
-              <div className="rounded-2xl border border-ink/5 bg-white p-6 shadow-card lg:col-span-2">
-                <div className="mb-4 flex items-center justify-between">
-                  <h2 className="text-lg font-bold text-ink">Abonnements</h2>
-                  <Button href="#" size="sm">Voir tout</Button>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-sm">
-                    <thead>
-                      <tr className="border-b border-ink/5 text-xs font-medium text-ink-soft">
-                        <th className="pb-3">Outil</th>
-                        <th className="pb-3">Sièges</th>
-                        <th className="pb-3">Dépensé (an)</th>
-                        <th className="pb-3">Renouvellement</th>
-                        <th className="pb-3">Statut</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {SUBSCRIPTIONS.map((sub) => (
-                        <tr key={sub.name} className="border-b border-ink/5 last:border-0">
-                          <td className="py-3 font-medium text-ink">{sub.name}</td>
-                          <td className="py-3 text-ink-soft">{sub.seats}</td>
-                          <td className="py-3 text-ink-soft">{sub.spent}</td>
-                          <td className="py-3 text-ink-soft">{sub.renewal}</td>
-                          <td className="py-3">
-                            <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
-                              sub.status === "warning" 
-                                ? "bg-accent/20 text-accent" 
-                                : "bg-primary/10 text-primary-deep"
-                            }`}>
-                              {sub.status === "warning" ? "Attention" : "Actif"}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+      <div className="mt-6 grid gap-6 xl:grid-cols-[1fr_380px]">
+        <Card d={0.3}>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-sm font-bold text-ink">Dépenses au cours du temps <InfoIcon className="h-3.5 w-3.5 text-ink-soft" /></h2>
+            <Select label="Mensuel" />
+          </div>
+          <AreaChart values={SPEND_SERIES} />
+        </Card>
+        <Card d={0.35}>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-sm font-bold text-ink">Renouvellements à venir</h2>
+            <a href="/dashboard/abonnements" className="text-xs font-semibold text-primary hover:text-primary-deep">Voir tout</a>
+          </div>
+          <ul className="space-y-3">
+            {RENEWALS.map((r) => (
+              <li key={r.name} className="flex items-center gap-3 rounded-xl border border-ink/5 p-2.5">
+                <BrandTile name={r.name} />
+                <span className="flex-1"><span className="block text-[13px] font-semibold text-ink">{r.name}</span><span className="block text-[11px] text-ink-soft">{r.amount}</span></span>
+                <span className="text-right"><span className="block text-[11px] text-ink-soft">{r.date}</span><span className={`block text-[11px] font-semibold ${r.days < 30 ? "text-warn" : "text-success"}`}>● Dans {r.days} jours</span></span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </div>
 
-              {/* Side panel */}
-              <div className="space-y-6">
-                {/* Alert card */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="rounded-2xl border border-ink/5 bg-accent/10 p-6"
-                >
-                  <h3 className="font-bold text-ink">Action requise</h3>
-                  <p className="mt-2 text-sm text-ink-soft">
-                    Slack arrive à échéance dans 10 jours. 12 sièges semblent inutilisés.
-                  </p>
-                  <Magnetic>
-                    <Button href="#" size="sm" className="mt-4 bg-ink text-cream hover:bg-ink/90">
-                      Examiner
-                    </Button>
-                  </Magnetic>
-                </motion.div>
+      <div className="mt-6 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <Card d={0.4}>
+          <h2 className="mb-5 text-sm font-bold text-ink">Dépenses par catégorie</h2>
+          <div className="flex items-center gap-6">
+            <Donut data={CATS} centerTop="143 650 €" centerSub="Total" />
+            <ul className="flex-1 space-y-2">
+              {CATS.map((c) => (
+                <li key={c.label} className="flex items-center gap-2 text-[11px]"><span className="h-2.5 w-2.5 rounded-sm" style={{ background: c.color }} /><span className="flex-1 text-ink-soft">{c.label}</span><span className="font-semibold text-ink">{c.value.toLocaleString("fr-FR")} €</span><span className="w-8 text-right text-ink-soft">{c.pct}</span></li>
+              ))}
+            </ul>
+          </div>
+        </Card>
+        <Card d={0.45}>
+          <h2 className="mb-5 text-sm font-bold text-ink">Dépenses par équipe</h2>
+          <ul className="space-y-3.5">
+            {TEAMS_SPEND.map((t, i) => (
+              <li key={t.label} className="grid grid-cols-[64px_1fr_auto] items-center gap-3 text-[11px]">
+                <span className="text-ink-soft">{t.label}</span>
+                <span className="h-1.5 overflow-hidden rounded-full bg-ink/5"><motion.span initial={{ width: 0 }} animate={{ width: `${t.pct * 4}%` }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: "easeOut" }} className="block h-full rounded-full bg-primary" /></span>
+                <span className="font-semibold text-ink">{t.amount} <span className="ml-1 font-normal text-ink-soft">{t.share}</span></span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+        <Card d={0.5} className="lg:col-span-2 xl:col-span-1">
+          <div className="mb-4 flex items-center justify-between"><h2 className="text-sm font-bold text-ink">Alertes</h2><a href="/dashboard/alertes" className="text-xs font-semibold text-primary hover:text-primary-deep">Voir tout</a></div>
+          <ul className="space-y-3">
+            {ALERTS.slice(0, 3).map((a) => (
+              <li key={a.title} className="flex items-start gap-3 rounded-xl border border-ink/5 p-3">
+                <span className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full ${a.tone === "red" ? "bg-danger-soft text-danger" : a.tone === "orange" ? "bg-warn-soft text-warn" : "bg-primary/10 text-primary-deep"}`}>
+                  {a.tone === "orange" ? <UsersIcon className="h-3.5 w-3.5" /> : <BellIcon className="h-3.5 w-3.5" />}
+                </span>
+                <span><span className="block text-[13px] font-semibold leading-snug text-ink">{a.title}</span><span className="mt-0.5 block text-[11px] text-ink-soft">{a.sub}</span></span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </div>
 
-                {/* Quick actions */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="rounded-2xl border border-ink/5 bg-white p-6 shadow-card"
-                >
-                  <h3 className="font-bold text-ink">Actions rapides</h3>
-                  <div className="mt-4 space-y-2">
-                    <QuickAction icon="📊" label="Exporter les données" href="#" />
-                    <QuickAction icon="🔔" label="Configurer les alertes" href="#" />
-                    <QuickAction icon="👥" label="Inviter un collègue" href="#" />
-                    <QuickAction icon="💳" label="Ajouter une source" href="#" />
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </main>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-function StatCard({ label, value, trend, trendUp }: { label: string; value: string; trend: string; trendUp?: boolean }) {
-  return (
-    <div className="rounded-2xl border border-ink/5 bg-white p-5 shadow-card">
-      <p className="text-xs font-medium text-ink-soft">{label}</p>
-      <p className="mt-2 text-2xl font-extrabold text-ink">{value}</p>
-      <p className={`mt-1 text-xs font-medium ${trendUp ? "text-primary-deep" : "text-ink-soft"}`}>
-        {trend}
-      </p>
-    </div>
-  );
-}
-
-function QuickAction({ icon, label, href }: { icon: string; label: string; href: string }) {
-  return (
-    <a href={href} className="flex items-center gap-3 rounded-lg p-2 transition hover:bg-cream">
-      <span className="text-lg">{icon}</span>
-      <span className="text-sm font-medium text-ink">{label}</span>
-    </a>
+      <motion.div {...fadeUp(0.55)} className="mt-6 flex flex-wrap items-center gap-4 rounded-2xl border border-primary/15 bg-primary/5 p-5">
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/15"><SparklesIcon className="h-5 w-5 text-primary-deep" /></span>
+        <div className="flex-1"><p className="text-sm font-bold text-ink">Nous avons identifié 24 350 € d'économies potentielles</p><p className="text-xs text-ink-soft">16 sièges inutilisés, 3 outils en doublon et 5 abonnements peu utilisés.</p></div>
+        <a href="#" className="rounded-lg border border-primary/30 bg-white px-4 py-2.5 text-xs font-bold text-primary-deep transition hover:bg-primary hover:text-white">Découvrir les opportunités →</a>
+      </motion.div>
+    </>
   );
 }
