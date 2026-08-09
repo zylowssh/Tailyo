@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+body { @apply bg-cream font-sans text-ink antialiased; }
+
+::selection { @apply bg-primary/20 text-primary-deep; }
+
+@layer utilities {
+  .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee, .animate-floaty { animation: none; }
+}

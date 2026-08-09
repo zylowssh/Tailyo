@@ -1,0 +1,4 @@
+The source specification expects:
+- public/og.png
+- public/textures/paper.png
+These generated assets were referenced in the supplied code but were not included in the uploaded source.
